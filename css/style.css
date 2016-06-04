@@ -1,0 +1,62 @@
+
+#pick-btn{
+    bottom: 7em; 
+    margin: auto; 
+    z-index: 5;
+}
+
+#pick-btn-text{
+    position: relative;
+    bottom: 4em; 
+    margin: auto; 
+    z-index: 5;
+}
+
+#rname{
+	color: #fff; 
+	z-index: 5; 
+	bottom: 5.5em; 
+	position: relative; 
+	margin-bottom: 0;
+}
+#raddr{
+	color: #fff; 
+	z-index: 5; 
+	bottom: 13em; 
+	position: relative;
+}
+
+
+@media screen and (max-width: 720px) {
+    #main_img{
+    	content:url("../img/Laundry_mobile.jpg");
+    }
+
+    #main_grad{
+		content:url("../img/Gradient_mobile.png");
+    }
+    #pick-btn{
+    	bottom: 5em; 
+    	margin: auto; 
+    	z-index: 5;
+    }
+    #rname{
+    	color: #fff; 
+    	z-index: 5; 
+    	bottom: 5em; 
+    	position: relative; 
+    	margin-bottom: 0;
+    }
+    #raddr{
+    	color: #fff; 
+    	z-index: 5; 
+    	bottom: 12em; 
+    	position: relative;
+    }
+    #pick-btn-text{
+        position: relative;
+        bottom: 3em; 
+        margin: auto; 
+        z-index: 5;
+    }
+}
