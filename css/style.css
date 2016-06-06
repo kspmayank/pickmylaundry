@@ -26,6 +26,11 @@
 	position: relative;
 }
 
+.status{
+    margin: 0.5em 0;
+    color: #fff;
+    text-transform: none !important;
+}
 
 @media screen and (max-width: 720px) {
     #main_img{

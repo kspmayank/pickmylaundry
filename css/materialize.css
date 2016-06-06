@@ -5075,8 +5075,8 @@ button.btn-floating {
   font-size: 16px;
   color: #26a69a;
   display: block;
-  line-height: 22px;
-  padding: 14px 16px;
+  line-height: 64px; /*Changed line height from 22px to 64px*/
+  padding: 0 16px; /*Changed padding from 14px 16px to 0 16px*/
 }
 
 .dropdown-content li > span > label {
@@ -5292,7 +5292,7 @@ a.waves-effect .waves-ripple {
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 45%;
+  max-height: 80%;
   border-radius: 0;
   will-change: bottom, opacity;
 }
