@@ -5203,6 +5203,7 @@ function DatePicker( picker, settings ) {
                 includeToday = ':not(.' + settings.klass.buttonToday + ')'
             }
             picker.$root.find( 'button' + includeToday + ', select' ).attr( 'disabled', false )
+            picker.$root.appendTo('body');
         }, 1 ).
         on( 'close', function() {
             picker.$root.find( 'button, select' ).attr( 'disabled', true )

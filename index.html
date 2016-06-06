@@ -45,7 +45,7 @@
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo"><img src="img/logo-white.png" width="75" style="z-index: 10;"></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="left hide-on-med-and-down" style="margin-left: 5em;">
+          <ul class="hide-on-med-and-down" style="margin-left: 5em;">
             <li><a href="#!">Home</a></li>
             <!-- Dropdown Trigger -->
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Services<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -78,7 +78,7 @@
     <p class="" id="raddr" align="center" >2nd Floor, A-1, Sector 10, Noida, U.P.</p>
 
     <div align="center" style="height: 0;"><a class="waves-effect waves-light orange darken-1 btn-large modal-trigger" href="#modal1" id="pick-btn" style=""><i class="material-icons left">shopping_basket</i><strong>Schedule Pickup</strong></a>
-    <h5 id="pick-btn-text"><img src="img/logo_pml.png" height="40" width="250"></h5>
+    <h5 id="pick-btn-text"><a href="http://www.pickmylaundry.in"><img src="img/logo_pml.png" height="40" width="250"></a></h5>
     </div>
 <!--     <div  style="color: #fff; text-align: left; height: 5em; background: -webkit-linear-gradient(#D8D6D6,#151414);">
     <div class="container-fluid" style="max-width: 1000px;" >
@@ -93,7 +93,7 @@
    <div style="top: 2em; position: relative;">
     <div class="row center">
       <div class="left col m4">
-        <h4 align="left">Completed Orders</h4>
+        <h4 align="left">My Orders</h4>
       </div>
       <div class="col m6 center">
         <!-- <div class="" style="margin: auto; width:50em;"><h5><div class="input-field col m1 center">Date</div>  -->
@@ -108,7 +108,7 @@
         </div></h5></div>
         <br>
         <div class="input-field col m2 offset-s3"  style="margin-top: 0; ">
-          <a class="waves-effect waves-light btn"><i class="material-icons left">today</i>Apply</a>
+          <a class="waves-effect waves-light btn" style="float: right;"><i class="material-icons left">today</i>Apply</a>
         </div>
 
         
@@ -154,14 +154,14 @@
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal orange btn-flat">Dispatched</td>
           </tr>
-          <tr class="modal-trigger" href="#modal-complete">  
+          <tr class="modal-trigger tr-compl" href="#modal-complete">  
             <td>1</td>
             <td>02-02-16</td>
             <td>020216</td>
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal red btn-flat">Completed</td>
           </tr>
-          <tr class="modal-trigger" href="#modal-complete">
+          <tr class="modal-trigger tr-compl" href="#modal-complete">
             <td>1</td>
             <td>02-02-16</td>
             <td>020216</td>
@@ -205,13 +205,13 @@
             <div class="col m4">
               <h5>Select Time</h5>
               <div class="input-field col m5 s5">
-                <label for="startdate" class="">Select Pickup Date</label>
-                <input id="startdate" type="date" class="datepicker">
+                <label for="pickupdate" class="">Select Pickup Date</label>
+                <input id="pickupdate" type="date" class="datepicker">
               </div>
               <div class="input-field col m2 s2 center">to</div>
               <div class="input-field col m5 s5">
-                <label for="enddate" class="">Select Delivery Date</label>
-                <input id="enddate" type="date" class="datepicker">
+                <label for="deliverydate" class="">Select Delivery Date</label>
+                <input id="deliverydate" type="date" class="datepicker">
               </div>
             </div>
             <div class="col m2 offset-m1 offset-s5">
@@ -266,7 +266,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><strong>Rs. 250</strong></td>
+            <td><hr><strong>Rs. 250</strong><hr></td>
           </tr>
         </tbody>
       </table> 
@@ -279,7 +279,7 @@
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/materialize.js"></script>
 
   <script>
     
@@ -300,7 +300,9 @@
         selectYears: 1 // Creates a dropdown of 15 years to control year
       });
 
-     $('table tr').click(function(){
+     // $( ".datepicker" ).datepicker();
+
+     $('tr-compl').click(function(){
         window.location = $(this).attr('href');
         return false;
      });
