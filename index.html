@@ -1,3 +1,16 @@
+<?php
+  // See: http://blog.ircmaxell.com/2013/02/preventing-csrf-attacks.html
+  // Start a session (which should use cookies over HTTP only).
+  session_start();
+  // Create a new CSRF token.
+  if (! isset($_SESSION['csrf_token'])) {
+      $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
+  }
+  // Check a POST is valid.
+  if (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
+      // POST data is valid.
+  }
+?>
 <!DOCTYPE html>
   <html>
     <head>
@@ -91,7 +104,7 @@
  -->
    
    <div style="top: 2em; position: relative;">
-    <div class="row center">
+    <div class="row center myorders">
       <div class="left col m4">
         <h4 align="left">My Orders</h4>
       </div>
@@ -108,25 +121,29 @@
         </div></h5></div>
         <br>
         <div class="input-field col m2 offset-s3"  style="margin-top: 0; ">
-          <a class="waves-effect waves-light btn" style="float: right;"><i class="material-icons left">today</i>Apply</a>
+          <a class="waves-effect waves-light btn" id="apply" style="float: right;"><i class="material-icons left">today</i>Apply</a>
         </div>
 
-        
+        <script type="text/javascript">
+          $(document).ready(function(){
+
+          });
+        </script>
 
     <div class="" style="margin-top: 6em;">
-      <table class="highlight centered ">
+      <table id="orderst" class="highlight centered ">
         <thead>
           <tr>
-              <th data-field="sno"></th>
-              <th data-field="date">Date</th>
-              <th data-field="price">Order No</th>
-              <th data-field="price">Bill Amount</th>
-              <th data-field="status">Status</th>
+              <th data-field="sno">Order ID</th>
+              <th data-field="date">Sales Order No</th>
+              <th data-field="price">Order Date</th>
+              <th data-field="priced">Order Status</th>
+              <th data-field="status">Total Bill</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
+        <tbody >
+          <!-- <tr>
             <td>1</td>
             <td>02-02-16</td>
             <td>020216</td>
@@ -154,20 +171,20 @@
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal orange btn-flat">Dispatched</td>
           </tr>
-          <tr class="modal-trigger tr-compl" href="#modal-complete">  
+          <tr class="modal-trigger tr-compl" id="tr-complete" href="#modal-complete">  
             <td>1</td>
             <td>02-02-16</td>
             <td>020216</td>
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal red btn-flat">Completed</td>
           </tr>
-          <tr class="modal-trigger tr-compl" href="#modal-complete">
+          <tr class="modal-trigger tr-compl" id="tr-complete" href="#modal-complete">
             <td>1</td>
             <td>02-02-16</td>
             <td>020216</td>
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal red btn-flat">Completed</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -208,14 +225,8 @@
                 <label for="pickupdate" class="">Select Pickup Date</label>
                 <input id="pickupdate" type="date" class="datepicker">
               </div>
-              <div class="input-field col m2 s2 center">to</div>
-              <div class="input-field col m5 s5">
-                <label for="deliverydate" class="">Select Delivery Date</label>
-                <input id="deliverydate" type="date" class="datepicker">
-              </div>
-            </div>
             <div class="col m2 offset-m1 offset-s5">
-              <a class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">done</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light " id="pick"><i class="material-icons">done</i></a>
             </div>
             </div>
           </form>
@@ -280,6 +291,7 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 
   <script>
     

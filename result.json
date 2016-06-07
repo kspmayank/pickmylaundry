@@ -1,0 +1,14 @@
+{
+	"success": true,
+	"data": [{
+		"OrderId": "63870",
+		"OrderDate": "2016-06-06 14:11:51",
+		"salesorder_no": "SO34418",
+		"OrderStatus": "Vendor Assigned",
+		"PickupDate": "2016-06-06",
+		"PickupTime_Slot": "5 PM to 7 PM",
+		"DeliveryDate": "2016-06-08",
+		"DeliveryTime_Slot": "5 PM to 7 PM",
+		"TotalBill": 0
+	}]
+}
