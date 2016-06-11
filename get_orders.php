@@ -1,19 +1,19 @@
 <?php
 	
 	// $address =  $_POST["address"];
-	$contactid =  $_REQUEST["contactid"];
+	/*$contactid =  $_REQUEST["contactid"];
 	$key = $_REQUEST["key"];
-	$api_key = $_REQUEST["api_key"];
+	$api_key = $_REQUEST["api_key"];*/
 	// $pickup_date = $_POST["pickup_date"];
 	// $service = $_POST["service"];
 
 	// echo $key;
 
-	$cmd = 'curl -i -H "Accept: application/json" -H "Content-Type: application/json"  "http://crm.pickmylaundry.in/api/get_orders.php?contactid=10202&key=15805b7d1f6aefe789c10c3d0a97&api_key=adurcupsk49f8fwek1"';
+	$cmd = 'curl -X POST -H "Content-Type: multipart/form-data" -F "contactid=64072" -F "api_key=adurcupsk49f8fwek1" -F "key=fcd5c9d258363f090ef3f05d20ff8e" "http://crm.pickmylaundry.in/api/get_orders.php"';
 
    	$curl_response = exec($cmd);
-   	$output = json_encode($cmd, true);
-   	// echoRespnse(200, $output);
+   	$output = json_decode($curl_response, true);
+   	echo json_encode($output);
 
 
 ?>

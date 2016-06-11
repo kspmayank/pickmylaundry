@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
   // See: http://blog.ircmaxell.com/2013/02/preventing-csrf-attacks.html
   // Start a session (which should use cookies over HTTP only).
   session_start();
@@ -10,7 +10,7 @@
   if (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
       // POST data is valid.
   }
-?>
+?> -->
 <!DOCTYPE html>
   <html>
     <head>
@@ -123,12 +123,6 @@
         <div class="input-field col m2 offset-s3"  style="margin-top: 0; ">
           <a class="waves-effect waves-light btn" id="apply" style="float: right;"><i class="material-icons left">today</i>Apply</a>
         </div>
-
-        <script type="text/javascript">
-          $(document).ready(function(){
-
-          });
-        </script>
 
     <div class="" style="margin-top: 6em;">
       <table id="orderst" class="highlight centered ">

@@ -7,11 +7,10 @@ $(document).ready(function(){
 	    url: 'get_orders.php',
 	    data: { contactid: "10202", key: "15805b7d1f6aefe789c10c3d0a97", api_key: "adurcupsk49f8fwek1" },
 	    success: function(resp) {
-	    	console.log(1); 
-	    	console.log(resp); 
-	    	console.log(resp.data[0].OrderId);
-	    	for (var i = resp.data.length - 1; i >= 0; i--) {
-		    	$("#orderst tbody").append("<tr><td>"+resp.data[i].OrderId+"</td><td>"+resp.data[i].salesorder_no+"</td><td>"+resp.data[i].OrderDate+"</td><td>"+resp.data[i].OrderStatus+"</td><td>"+resp.data[i].TotalBill+"</td></tr>");
+	    	var jsonObj = JSON.parse(resp);
+	    	console.log(jsonObj.data[0].OrderId);
+	    	for (var i = jsonObj.data.length - 1; i >= 0; i--) {
+		    	$("#orderst tbody").append("<tr><td>"+jsonObj.data[i].OrderId+"</td><td>"+jsonObj.data[i].salesorder_no+"</td><td>"+jsonObj.data[i].OrderDate+"</td><td>"+jsonObj.data[i].OrderStatus+"</td><td>"+jsonObj.data[i].TotalBill+"</td></tr>");
 	    	};
 	    }
 	});
