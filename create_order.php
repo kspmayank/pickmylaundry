@@ -9,7 +9,7 @@
 
 	// echo $address;
 
-	$cmd = 'curl -i -H "Accept: application/json" -H "Content-Type: application/json"  http://crm.pickmylaundry.in/api/create_order.php?address='+$address+'&contactid='+$contactid+'&pickup_date'+$pickup_date+'&key'+$key+'&api_key'+$api_key+'&service'+$service+;
+	$cmd = 'curl -i -H "Accept: application/json" -H "Content-Type: application/json"  http://crm.pickmylaundry.in/api/create_order.php?address='.$address.'&contactid='.$contactid.'&pickup_date='.$pickup_date.'&key='.$key.'&api_key='.$api_key.'&service='.$service.;
 
    	$curl_response = exec($cmd);
    	$output = json_decode($curl_response, true);
