@@ -1,4 +1,4 @@
-<!-- <?php
+ <?php
   // See: http://blog.ircmaxell.com/2013/02/preventing-csrf-attacks.html
   // Start a session (which should use cookies over HTTP only).
   session_start();
@@ -10,7 +10,8 @@
   if (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
       // POST data is valid.
   }
-?> -->
+?> 
+
 <!DOCTYPE html>
   <html>
     <head>
@@ -20,7 +21,6 @@
       <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -108,8 +108,8 @@
       <div class="left col m4">
         <h4 align="left">My Orders</h4>
       </div>
-      <div class="col m6 center">
-        <!-- <div class="" style="margin: auto; width:50em;"><h5><div class="input-field col m1 center">Date</div>  -->
+      </div>
+      <!-- <div class="col m6 center">
         <div class="input-field col m5 s5">
           <label for="startdate" class="">Select Start Date</label>
           <input id="startdate" type="date" class="datepicker">
@@ -122,16 +122,32 @@
         <br>
         <div class="input-field col m2 offset-s3"  style="margin-top: 0; ">
           <a class="waves-effect waves-light btn" id="apply" style="float: right;"><i class="material-icons left">today</i>Apply</a>
+        </div> -->
+
+        <div id="loader" style="text-align: center; display: none;">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
     <div class="" style="margin-top: 6em;">
-      <table id="orderst" class="highlight centered ">
+      <table id="orderst" class="highlight centered " style="display: none;">
         <thead>
           <tr>
               <th data-field="sno">Order ID</th>
               <th data-field="date">Sales Order No</th>
               <th data-field="price">Order Date</th>
-              <th data-field="priced">Order Status</th>
+              <th data-field="priced">View Order Status</th>
               <th data-field="status">Total Bill</th>
           </tr>
         </thead>
@@ -143,42 +159,7 @@
             <td>020216</td>
             <td>Rs.87</td>
             <td class="waves-effect status waves-teal green btn-flat"> Washing </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>02-02-16</td>
-            <td>020216</td>
-            <td>Rs.87</td>
-            <td class="waves-effect status waves-teal green btn-flat">Washing</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>02-02-16</td>
-            <td>020216</td>
-            <td>Rs.87</td>
-            <td class="waves-effect status waves-teal orange btn-flat">Dispatched</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>02-02-16</td>
-            <td>020216</td>
-            <td>Rs.87</td>
-            <td class="waves-effect status waves-teal orange btn-flat">Dispatched</td>
-          </tr>
-          <tr class="modal-trigger tr-compl" id="tr-complete" href="#modal-complete">  
-            <td>1</td>
-            <td>02-02-16</td>
-            <td>020216</td>
-            <td>Rs.87</td>
-            <td class="waves-effect status waves-teal red btn-flat">Completed</td>
-          </tr>
-          <tr class="modal-trigger tr-compl" id="tr-complete" href="#modal-complete">
-            <td>1</td>
-            <td>02-02-16</td>
-            <td>020216</td>
-            <td>Rs.87</td>
-            <td class="waves-effect status waves-teal red btn-flat">Completed</td>
-          </tr> -->
+          </tr>  -->
         </tbody>
       </table>
     </div>
@@ -188,42 +169,48 @@
     </div>
 
     <!-- Modal Structure -->
+
+
+
+    <!-- Modal Structure -->
+
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-content">
         <h4>Select a Service Type</h4>
         <p>
-          <form action="#">
+          <form action="#" id="order">
             <div class="row">
-            <div class="col m4">
-
-            <p>
-              <input type="checkbox" id="test5" />
-              <label for="test5">Wash &amp; Fold</label>
-            </p>
-            <p>
-              <input type="checkbox" id="test6" />
-              <label for="test6">Wash &amp; Iron</label>
-            </p>
-            <p>
-              <input type="checkbox" id="test7" />
-              <label for="test7">Premium Laundry</label>
-            </p>
-            <p>
-              <input type="checkbox" id="test8" />
-              <label for="test8">Dry Cleaning</label>
-            </p>
-            </div>
-            <div class="col m4">
-              <h5>Select Time</h5>
-              <div class="input-field col m5 s5">
-                <label for="pickupdate" class="">Select Pickup Date</label>
-                <input id="pickupdate" type="date" class="datepicker">
+              <div class="col m4">
+                <input type="hidden" name="csrf_token" value="" />
+                <p>
+                  <input type="radio" name="service" id="test5" value="Wash Fold" />
+                  <label for="test5">Wash &amp; Fold</label>
+                </p>
+                <p>
+                  <input type="radio" name="service" id="test6" value="Wash Iron" />
+                  <label for="test6">Wash &amp; Iron</label>
+                </p>
+                <p>
+                  <input type="radio" name="service" id="test7" value="Premium Laundry" />
+                  <label for="test7">Premium Laundry</label>
+                </p>
+                <p>
+                  <input type="radio" name="service" id="test8" value="Dry Cleaning" />
+                  <label for="test8">Dry Cleaning</label>
+                </p>
               </div>
-            <div class="col m2 offset-m1 offset-s5">
-              <a class="btn-floating btn-large waves-effect waves-light " id="pick"><i class="material-icons">done</i></a>
-            </div>
-            </div>
-          </form>
+              <div class="col m4">
+                <h5>Select Time</h5>
+                <div class="input-field col m5 s5">
+                  <label for="pickupdate" class="">Select Pickup Date</label>
+                  <input id="pickupdate" type="date" class="datepicker">
+                </div>
+                <div class="col m2 offset-m1 offset-s5">
+                  <a class="btn-floating btn-large waves-effect waves-light " id="pick"><i class="material-icons">done</i></a>
+                </div>
+              </div>
+              </div>
+            </form>
 
         </p>
       </div>
@@ -232,55 +219,68 @@
       </div>
     </div>
 
-    <!-- Modal Structure -->
+
+<!-- Modal Structure -->
     <div id="modal-complete" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>Order Summary</h4>
         <p>
-          <h5>Order No: 1</h5>
-          Pickup Date : <strong>01 June 2016</strong> <span style="float: right;">Delivery Date: <strong>04 June 2016</strong></span> <br><br>
+          <h5>Sales Order No: <span id="so-no"></span></h5>
+          Pickup Date : <strong id="pdate"></strong> <span style="float: right;">Delivery Date: <strong id="ddate"></strong></span> <br><br>
 
-          <table class="highlight centered ">
-        <thead>
-          <tr>
-              <th data-field="sno"></th>
-              <th data-field="date">Description</th>
-              <th data-field="price">Quantity</th>
-              <th data-field="price">Rate</th>
-              <th data-field="status">Amount</th>
-          </tr>
-        </thead>
+          <div id="load-order" style="text-align: center; display: none;">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Table Cloth Small</td>
-            <td>5</td>
-            <td>10</td>
-            <td>50</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Chef Coat</td>
-            <td>100</td>
-            <td>2</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><hr><strong>Rs. 250</strong><hr></td>
-          </tr>
-        </tbody>
-      </table> 
+          <table class="details-table highlight centered " style="display: none;">
+            <thead>
+              <tr>
+                <th data-field="sno"></th>
+                <th data-field="date">Description</th>
+                <th data-field="price">Quantity</th>
+                <th data-field="price">Rate</th>
+                <th data-field="status">Amount</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- <tr>
+                <td>1</td>
+                <td>Table Cloth Small</td>
+                <td>5</td>
+                <td>10</td>
+                <td>50</td>
+              </tr> -->
+              <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><hr><strong></strong><hr></td>
+              </tr> -->
+            </tbody>
+          </table> 
         </p>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Done</a>
       </div>
     </div>
+
+    
+
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -299,7 +299,7 @@
 
      $('.slider').slider({full_width: true});
 
-     $('.modal-trigger').leanModal();
+     $('.modal-trigger').leanModal();     
 
      $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -308,10 +308,7 @@
 
      // $( ".datepicker" ).datepicker();
 
-     $('tr-compl').click(function(){
-        window.location = $(this).attr('href');
-        return false;
-     });
+     
 
     });
   </script>

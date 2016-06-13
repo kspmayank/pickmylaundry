@@ -74,3 +74,7 @@
         z-index: 5;
     }
 }
+
+.table { display:table; }
+.table-row { display:table-row; }
+.table-cell { display:table-cell; }
